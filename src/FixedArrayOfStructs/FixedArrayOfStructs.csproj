@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <EnablePreviewFeatures>true</EnablePreviewFeatures>
+        <LangVersion>preview</LangVersion>
+        <TargetFramework>net6.0</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NativeStrings" Version="1.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="ConstUInt.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>ConstUInt.cs</LastGenOutput>
+      </None>
+      <None Update="FixedStrings.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>FixedStrings.cs</LastGenOutput>
+      </None>
+      <None Update="FixedStructs.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>FixedStructs.cs</LastGenOutput>
+      </None>
+      
+      <Compile Update="ConstUInt.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ConstUInt.tt</DependentUpon>
+      </Compile>
+      <Compile Update="FixedStrings.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>FixedStrings.tt</DependentUpon>
+      </Compile>
+      <Compile Update="FixedStructs.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>FixedStructs.tt</DependentUpon>
+      </Compile> 
+    </ItemGroup>
+    
+</Project>
