@@ -183,4 +183,61 @@ namespace Benchmarks
             }
         }
     }
+
+    
+    
+    [StructLayout(LayoutKind.Sequential)]
+    public struct FixedPtrHandles
+    {
+        public OpaqueHandle_fixed_size_array_20 handles;
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct OpaqueHandle_fixed_size_array_20
+        {
+            public OpaqueHandle E0;
+            public OpaqueHandle E1;
+            public OpaqueHandle E2;
+            public OpaqueHandle E3;
+            public OpaqueHandle E4;
+            public OpaqueHandle E5;
+            public OpaqueHandle E6;
+            public OpaqueHandle E7;
+            public OpaqueHandle E8;
+            public OpaqueHandle E9;
+            public OpaqueHandle E10;
+            public OpaqueHandle E11;
+            public OpaqueHandle E12;
+            public OpaqueHandle E13;
+            public OpaqueHandle E14;
+            public OpaqueHandle E15;
+            public OpaqueHandle E16;
+            public OpaqueHandle E17;
+            public OpaqueHandle E18;
+            public OpaqueHandle E19;
+
+            public unsafe ref OpaqueHandle this[int index]
+            {
+                [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                get
+                {
+                    {
+                        OpaqueHandle* pThis = (OpaqueHandle*)Unsafe.AsPointer(ref E0);
+                        return ref pThis[index];
+                    }
+                }
+            }
+
+            public unsafe ref OpaqueHandle this[long index]
+            {
+                [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                get
+                {
+                    {
+                        OpaqueHandle* pThis = (OpaqueHandle*)Unsafe.AsPointer(ref E0);
+                        return ref pThis[index];
+                    }
+                }
+            }
+        }
+    }
 }

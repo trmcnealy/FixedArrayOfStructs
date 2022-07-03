@@ -26,11 +26,12 @@ Random rand = new();
 //}
 
 {
+    OpaqueHandles[] oh = new OpaqueHandles[repeat];
+
+    nuint[] randValues = new nuint[OpaqueHandlesSize];
+
     using(Measure.Execution("OpaqueHandles"))
     {
-        OpaqueHandles[] oh = new OpaqueHandles[repeat];
-
-        nuint[] randValues = new nuint[OpaqueHandlesSize];
 
         for(long r = 0; r < repeat; ++r)
         {
@@ -67,11 +68,12 @@ Random rand = new();
     }
 }
 {
+    FixedHandles[] fh = new FixedHandles[repeat];
+
+    nuint[] randValues = new nuint[OpaqueHandlesSize];
+
     using(Measure.Execution("FixedHandles"))
     {
-        FixedHandles[] fh = new FixedHandles[repeat];
-
-        nuint[] randValues = new nuint[OpaqueHandlesSize];
 
         for(long r = 0; r < repeat; ++r)
         {
@@ -99,6 +101,48 @@ Random rand = new();
             if(!compare[r][i])
             {
                 Console.WriteLine($"FixedHandles Compare failed i={i}");
+            }
+            //else
+            //{
+            //    Console.WriteLine($"OpaqueHandles Compare success i={i}");
+            //}
+        }
+    }
+}
+{
+    FixedPtrHandles[] fh = new FixedPtrHandles[repeat];
+
+    nuint[] randValues = new nuint[OpaqueHandlesSize];
+
+    using(Measure.Execution("FixedPtrHandles"))
+    {
+
+        for(long r = 0; r < repeat; ++r)
+        {
+            for (long i = 0; i < randValues.Length; ++i)
+            {
+                randValues[i] = (nuint)rand.Next(0, Int32.MaxValue);
+            }
+
+            for(long i = 0; i < randValues.Length; ++i)
+            {
+                fh[r].handles[i] = randValues[i];
+            }
+
+            for(long i = 0; i < randValues.Length; ++i)
+            {
+                compare[r][i] = fh[r].handles[i] == randValues[i];
+            }
+        }
+    }
+
+    for(long r = 0; r < compare.Length; ++r)
+    {
+        for(long i = 0; i < compare[r].Length; ++i)
+        {
+            if(!compare[r][i])
+            {
+                Console.WriteLine($"FixedPtrHandles Compare failed i={i}");
             }
             //else
             //{
