@@ -6,6 +6,11 @@
         <TargetFramework>net6.0</TargetFramework>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Nullable>enable</Nullable>
+        <Authors>Timothy R. McNealy</Authors>
+        <Copyright>© Timothy R. McNealy</Copyright>
+        <PackageProjectUrl>https://github.com/trmcnealy/FixedArrayOfStructs</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/trmcnealy/FixedArrayOfStructs</RepositoryUrl>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
